@@ -34,10 +34,29 @@ function InputBlock (props){
   </div>
   )
 }
-function OutputBlock(){
+function OutputBlock(props){
+  let firstText = Number(props.firstText)
+  let secondText = Number(props.secondText)
+  let result;
+
+    switch(props.method){
+    case '+':
+      result = Math.round(firstText + secondText );
+      break;
+    case '-':
+      result = Math.round(firstText - secondText);
+      break;
+    case '*':
+      result = Math.round(firstText * secondText);
+      break;
+    case '/':
+      result = Math.round(firstText / secondText*100)/100;
+      break;
+    }
+  
   return(
-    <p></p>
-    )
+    <p>{result===0.01 || result===0 ? '數字小於0.01' : result}</p>
+  )
 }
 
 function App() {
@@ -47,7 +66,13 @@ function App() {
 
   let changefirstText = (e)=>{setfirstText(e.target.value)}
   let changesecondText = (e)=>{setsecondText(e.target.value)}
-  let changemethod = (e)=>{setmethod(e.target.value)}
+  let changemethod = (e)=>{
+    if(firstText === '' || secondText === ''){
+      alert('有欄位未輸入數字')
+    }else{
+      setmethod(e.target.value)
+    }  
+  }
   return (
     <div>
       <h2>四則運算</h2>
