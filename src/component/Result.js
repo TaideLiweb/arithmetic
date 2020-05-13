@@ -24,7 +24,7 @@ function Result(props) {
   return (
     <p>
       答案為:
-      {firstText === '' || secondText === '' ? '' : result}
+      {firstText === '' || secondText === '' || Number.isNaN(Number(result)) ? '' : result}
     </p>
   );
 }

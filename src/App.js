@@ -14,6 +14,7 @@ function App() {
   const changemethod = (e) => {
     if (firstText === '' || secondText === '') {
       alert('有欄位未輸入數字');
+      e.target.checked = false;
     } else { setmethod(e.target.value); }
   };
   return (
