@@ -50,12 +50,12 @@ function OutputBlock(props){
       result = Math.round(firstText * secondText);
       break;
     case '/':
-      result = Math.round(firstText / secondText*100)/100;
+      result = Math.round(firstText / secondText*1000)/1000;
       break;
     }
   
   return(
-    <p>{result===0.01 || result===0 ? '數字小於0.01' : result}</p>
+    <p>答案為:{firstText =="" || secondText =="" ? "" : result}</p>
   )
 }
 
@@ -74,7 +74,7 @@ function App() {
     }  
   }
   return (
-    <div>
+    <div className = "center">
       <h2>四則運算</h2>
       <InputBlock changefirstText = {changefirstText} changesecondText = {changesecondText} changemethod = {changemethod}/>
       <OutputBlock firstText = {firstText} secondText = {secondText} method = {method}/>
