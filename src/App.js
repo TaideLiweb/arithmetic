@@ -25,6 +25,7 @@ function App() {
         changesecondText={changesecondText}
         firstText={firstText}
         secondText={secondText}
+        method={method}
       />
       <Operator changemethod={changemethod} firstText={firstText} secondText={secondText} />
       <Result firstText={firstText} secondText={secondText} method={method} />
