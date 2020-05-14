@@ -13,8 +13,8 @@ function App() {
   const changesecondText = (e) => { setsecondText(e.target.value); };
   const changemethod = (e) => {
     if (firstText === '' || secondText === '') {
-      alert('有欄位未輸入數字');
       e.target.checked = false;
+      setmethod('');
     } else { setmethod(e.target.value); }
   };
   return (
@@ -23,8 +23,10 @@ function App() {
       <Numbers
         changefirstText={changefirstText}
         changesecondText={changesecondText}
+        firstText={firstText}
+        secondText={secondText}
       />
-      <Operator changemethod={changemethod} />
+      <Operator changemethod={changemethod} firstText={firstText} secondText={secondText} />
       <Result firstText={firstText} secondText={secondText} method={method} />
     </div>
   );

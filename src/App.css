@@ -1,10 +1,21 @@
+p{
+  margin: 0;
+}
 .flexbox{
   display: flex;
+}
+.minheight{
+  height: 40px; 
+  margin-top:10px;
 }
 .center{
   max-width: 850px;
   margin: 0 auto;
 }
-.red{
+.redword{
+  font-size: 10pt;
   color:red;
+}
+.mg40{
+  margin-left: 40px;
 }

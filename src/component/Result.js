@@ -17,12 +17,12 @@ function Result(props) {
       result = Math.round(firstText * secondText);
       break;
     case '/':
-      result = Math.round((firstText / secondText) * 1000) / 1000;
+      result = firstText / secondText;
       break;
     default:
   }
   return (
-    <p>
+    <p className="minheight">
       答案為:
       {firstText === '' || secondText === '' || Number.isNaN(Number(result)) ? '' : result}
     </p>
