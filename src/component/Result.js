@@ -1,10 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Result(props) {
+  Result.propTypes = {
+    firstText: PropTypes.string.isRequired,
+    secondText: PropTypes.string.isRequired,
+    method: PropTypes.func.isRequired,
+  };
   const { firstText, secondText, method } = props;
-  //   const firstText = Number(...props);
-  //   const secondText = Number(...props);
-  //   const method = { ...props };
   let result;
   switch (method) {
     case '+':
@@ -17,8 +20,11 @@ function Result(props) {
       result = Math.round(firstText * secondText);
       break;
     case '/':
-      result = firstText / secondText;
-      break;
+      if (firstText.match('^0') || secondText.match('^0')) {
+        result = '';
+      } else {
+        result = firstText / secondText;
+      } break;
     default:
   }
   return (

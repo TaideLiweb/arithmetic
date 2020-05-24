@@ -1,6 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Operator(props) {
+  Operator.propTypes = {
+    firstText: PropTypes.string.isRequired,
+    secondText: PropTypes.string.isRequired,
+    changemethod: PropTypes.func.isRequired,
+  };
   const { changemethod, firstText, secondText } = props;
   return (
     <div className="minheight">
