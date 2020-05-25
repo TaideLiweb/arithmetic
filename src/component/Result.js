@@ -2,11 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Result(props) {
-  Result.propTypes = {
-    firstText: PropTypes.string.isRequired,
-    secondText: PropTypes.string.isRequired,
-    method: PropTypes.func.isRequired,
-  };
   const { firstText, secondText, method } = props;
   let result;
   switch (method) {
@@ -20,7 +15,13 @@ function Result(props) {
       result = Math.round(firstText * secondText);
       break;
     case '/':
-      if (firstText.match('^0') || secondText.match('^0')) {
+      if (firstText.match('^0') && secondText.match('^0')) {
+        result = '無解';
+      } else if (firstText !== '' && firstText.match('^[0-9]*$') && secondText.match('^0')) {
+        result = '∞(無限大)';
+      } else if (!firstText.match('^[0-9]*$') || !secondText.match('^[0-9]*$')) {
+        result = '';
+      } else if (firstText === '' || secondText === '') {
         result = '';
       } else {
         result = firstText / secondText;
@@ -30,9 +31,15 @@ function Result(props) {
   return (
     <p className="minheight">
       答案為:
-      {firstText === '' || secondText === '' || Number.isNaN(Number(result)) ? '' : result}
+      {result}
     </p>
   );
 }
+
+Result.propTypes = {
+  firstText: PropTypes.string.isRequired,
+  secondText: PropTypes.string.isRequired,
+  method: PropTypes.string.isRequired,
+};
 
 export default Result;

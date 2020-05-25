@@ -6,28 +6,28 @@ import Operator from './component/Operator';
 import './App.css';
 
 function App() {
-  const [firstText, setfirstText] = useState('');
-  const [secondText, setsecondText] = useState('');
-  const [method, setmethod] = useState('');
-  const changefirstText = (e) => { setfirstText(e.target.value); };
-  const changesecondText = (e) => { setsecondText(e.target.value); };
-  const changemethod = (e) => {
+  const [firstText, setFirstText] = useState('');
+  const [secondText, setSecondText] = useState('');
+  const [method, setMethod] = useState('');
+  const changeFirstText = (e) => { setFirstText(e.target.value); };
+  const changeSecondText = (e) => { setSecondText(e.target.value); };
+  const changeMethod = (e) => {
     if (firstText === '' || secondText === '') {
       e.target.checked = false;
-      setmethod('');
-    } else { setmethod(e.target.value); }
+      setMethod('');
+    } else { setMethod(e.target.value); }
   };
   return (
     <div className="center">
       <Title />
       <Numbers
-        changefirstText={changefirstText}
-        changesecondText={changesecondText}
+        changeFirstText={changeFirstText}
+        changeSecondText={changeSecondText}
         firstText={firstText}
         secondText={secondText}
         method={method}
       />
-      <Operator changemethod={changemethod} firstText={firstText} secondText={secondText} />
+      <Operator changeMethod={changeMethod} firstText={firstText} secondText={secondText} />
       <Result firstText={firstText} secondText={secondText} method={method} />
     </div>
   );
