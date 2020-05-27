@@ -1,21 +1,21 @@
-p{
+p {
   margin: 0;
 }
-.flexbox{
+.flexbox {
   display: flex;
 }
-.minheight{
-  height: 40px; 
-  margin-top:10px;
+.minheight {
+  height: 40px;
+  margin-top: 10px;
 }
-.center{
+.center {
   max-width: 850px;
   margin: 0 auto;
 }
-.redword{
+.redword {
   font-size: 10pt;
-  color:red;
+  color: red;
 }
-.mg40{
+.mg40 {
   margin-left: 40px;
 }

@@ -1,15 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 function Numbers(props) {
-  const {
-    firstText, changeFirstText, changeSecondText, secondText,
-  } = props;
+  const { firstText, changeFirstText, changeSecondText, secondText } = props
   const wordDisplay = (value) => {
     if (!value.match('^[0-9]*$')) {
-      return (<p className="redword mg40">限定數字</p>);
-    } return null;
-  };
+      return <p className="redword mg40">限定數字</p>
+    }
+    return null
+  }
 
   return (
     <div className="minheight">
@@ -26,7 +25,7 @@ function Numbers(props) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 Numbers.propTypes = {
@@ -34,6 +33,6 @@ Numbers.propTypes = {
   secondText: PropTypes.string.isRequired,
   changeFirstText: PropTypes.func.isRequired,
   changeSecondText: PropTypes.func.isRequired,
-};
+}
 
-export default Numbers;
+export default Numbers
