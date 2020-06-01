@@ -1,39 +1,45 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
-function Result(props) {
-  const { firstText, secondText, method } = props
-  const [result, setResult] = useState('')
-  const methodController = () => {
-    switch (method) {
-      case '+':
-        setResult(Math.round(Number(firstText) + Number(secondText)))
-        break
-      case '-':
-        setResult(Math.round(firstText - secondText))
-        break
-      case '*':
-        setResult(Math.round(firstText * secondText))
-        break
-      case '/':
-        if (firstText.match('^0') && secondText.match('^0')) {
-          setResult('無解')
-        } else if (firstText !== '' && firstText.match('^[0-9]*$') && secondText.match('^0')) {
-          setResult('∞(無限大)')
-        } else if (!firstText.match('^[0-9]*$') || !secondText.match('^[0-9]*$')) {
-          setResult('')
-        } else if (firstText === '' || secondText === '') {
-          setResult('')
-        } else {
-          setResult(firstText / secondText)
-        }
-        break
-      default:
-    }
+const ivisionJudge = (firstNumber, secondNumber, setResult) => {
+  if (firstNumber.match('^0') && secondNumber.match('^0')) {
+    setResult('無解')
+  } else if (firstNumber.match('^[0-9]*$') && secondNumber.match('^0')) {
+    setResult('∞(無限大)')
+  } else if (firstNumber.match('^0') && secondNumber.match('^[0-9]*$')) {
+    setResult('0')
+  } else if (!firstNumber.match('^[0-9]*$') || !secondNumber.match('^[0-9]*$')) {
+    setResult('')
+  } else if (firstNumber === '' || secondNumber === '') {
+    setResult('')
+  } else {
+    setResult(firstNumber / secondNumber)
   }
+}
+
+function Result(props) {
+  const { firstNumber, secondNumber, operator } = props
+  const [result, setResult] = useState('')
   useEffect(() => {
-    methodController()
-  }, [method, result, methodController])
+    const operatorJudge = () => {
+      switch (operator) {
+        case '+':
+          setResult(Math.round(Number(firstNumber) + Number(secondNumber)))
+          break
+        case '-':
+          setResult(Math.round(firstNumber - secondNumber))
+          break
+        case '*':
+          setResult(Math.round(firstNumber * secondNumber))
+          break
+        case '/':
+          ivisionJudge(firstNumber, secondNumber, setResult)
+          break
+        default:
+      }
+    }
+    operatorJudge()
+  }, [operator, result, firstNumber, secondNumber])
   return (
     <p className="minheight">
       答案為:
@@ -43,9 +49,9 @@ function Result(props) {
 }
 
 Result.propTypes = {
-  firstText: PropTypes.string.isRequired,
-  secondText: PropTypes.string.isRequired,
-  method: PropTypes.string.isRequired,
+  firstNumber: PropTypes.string.isRequired,
+  secondNumber: PropTypes.string.isRequired,
+  operator: PropTypes.string.isRequired,
 }
 
 export default Result
