@@ -9,10 +9,10 @@ function App() {
   const [firstNumber, setFirstNumber] = useState('')
   const [secondNumber, setSecondNumber] = useState('')
   const [operator, setOperator] = useState('')
-  const changefirstNumber = (e) => {
+  const changeFirstNumber = (e) => {
     setFirstNumber(e.target.value)
   }
-  const changesecondNumber = (e) => {
+  const changeSecondNumber = (e) => {
     setSecondNumber(e.target.value)
   }
   const changeoperator = (e) => {
@@ -27,8 +27,8 @@ function App() {
     <div className="center">
       <Title />
       <Numbers
-        changefirstNumber={changefirstNumber}
-        changesecondNumber={changesecondNumber}
+        changeFirstNumber={changeFirstNumber}
+        changeSecondNumber={changeSecondNumber}
         firstNumber={firstNumber}
         secondNumber={secondNumber}
         operator={operator}
