@@ -15,7 +15,7 @@ function Operator(props) {
         ))}
       </div>
       {(firstNumber === '' || secondNumber === '') && (
-        <p className="redword">請輸入數字,再選取算法</p>
+        <p className="redword">請先輸入數字,再選取算法</p>
       )}
     </div>
   )
